@@ -1,6 +1,4 @@
 
-scrapy crawl phone_spider  
-
 # Running the scraper (macbook)
 1. Set up MongoDB locally
 2. Install scrapy library

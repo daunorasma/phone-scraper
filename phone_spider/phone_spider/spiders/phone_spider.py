@@ -13,10 +13,11 @@ class PhoneSpider(scrapy.Spider):
             # Follow each phone link and call parse_phone_details function
             yield response.follow(phone_link, callback=self.parse_phone_details)
 
-        # # Check if there's a "Next" page link and follow it
-        # next_page = response.css('li.page-item.active + li.page-item a.page-link::attr(href)').extract_first()
-        # if next_page:
-        #     yield response.follow(next_page, callback=self.parse)
+        # Check if there's a "Next" page link and follow it
+        # Comment out if you do not want a very long process
+        next_page = response.css('li.page-item.active + li.page-item a.page-link::attr(href)').extract_first()
+        if next_page:
+            yield response.follow(next_page, callback=self.parse)
 
     def parse_phone_details(self, response):
         item = PhoneDataItem()
